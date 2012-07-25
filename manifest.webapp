@@ -1,0 +1,32 @@
+{
+  "name": "Payment",
+  "description": "Payment",
+  "launch_path": "/",
+  "developer": {
+    "name": "Telefonica",
+    "url": "http://www.tid.es"
+  },
+  "locales": {
+    "en-US": {
+      "name": "Payment",
+      "description": "Payment"
+    },
+    "es": {
+      "name": "Payment",
+      "description": "Payment"
+    },
+    "fr": {
+      "name": "Payment",
+      "description": "Payment"
+    },
+    "pt-BR": {
+      "name": "Payment",
+      "description": "Payment"
+    }
+  },
+  "default_locale": "en-US",
+  "icons": {
+    "120": "/style/icons/facebook.png"
+  },
+  "previewMode": "true"
+}
