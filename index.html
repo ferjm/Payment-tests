@@ -8,10 +8,12 @@
   <body>
     <script>
       // Mock public payment provider JWT
-      const mockJWT = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMjM0NTY3ODkiLCJhdWQiOiJNb2NrIFBheW1lbnQgUHJvdmlkZXIiLCJ0eXAiOiJtb2NrXC9wYXltZW50c1wvaW5hcHBcL3YxIiwiZXhwIjoxMzQzMjI4NzA2LCJpYXQiOjEzNDMyMjUxMDYsInJlcXVlc3QiOnsibmFtZSI6IlBpZWNlIG9mIENha2UiLCJkZXNjcmlwdGlvbiI6IlZpcnR1YWwgY2hvY29sYXRlIGNha2UgdG8gZmlsbCB5b3VyIHZpcnR1YWwgdHVtbXkiLCJwcmljZSI6IjEwLjUwIiwiY3VycmVuY3lDb2RlIjoiVVNEIiwic2VsbGVyRGF0YSI6InVzZXJfaWQ6MTIyNDI0NSxvZmZlcl9jb2RlOjMwOTg1NzY5ODcsYWZmaWxpYXRlOmFrc2RmYm92dTlqIn19.iQiM5PXy6Vnz9oTNyLO81gunC4A7AVbQDAjFeykv6fs";
+      const mockJWT = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMjM0NTY3ODkiLCJhdWQiOiJNb2NrIFBheW1lbnQgUHJvdmlkZXIiLCJ0eXAiOiJtb2NrXC9wYXltZW50c1wvaW5hcHBcL3YxIiwiZXhwIjoxMzQ1MjU5ODgyLCJpYXQiOjEzNDUyNTYyODIsInJlcXVlc3QiOnsibmFtZSI6IlBpZWNlIG9mIENha2UiLCJkZXNjcmlwdGlvbiI6IlZpcnR1YWwgY2hvY29sYXRlIGNha2UgdG8gZmlsbCB5b3VyIHZpcnR1YWwgdHVtbXkiLCJwcmljZSI6W3siY291bnRyeSI6IlVTIiwiYW1vdW50IjoiNS41MCIsImN1cnJlbmN5IjoiVVNEIn0seyJjb3VudHJ5IjoiQlIiLCJhbW91bnQiOiI4LjUwIiwiY3VycmVuY3kiOiJCUkwifV19fQ.EaXnlL7LUlmYXUTty5ZkUQ7VZeCBa_edi2YXKPnjSl4";
+/*      const mockJWT = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMjM0NTY3ODkiLCJhdWQiOiJNb2NrIFBheW1lbnQgUHJvdmlkZXIiLCJ0eXAiOiJtb2NrXC9wYXltZW50c1wvaW5hcHBcL3YxIiwiZXhwIjoxMzQzMjk2NDQ0LCJpYXQiOjEzNDMyOTI4NDQsInJlcXVlc3QiOnsibmFtZSI6IlBpZWNlIG9mIENha2UiLCJkZXNjcmlwdGlvbiI6IlZpcnR1YWwgY2hvY29sYXRlIGNha2UgdG8gZmlsbCB5b3VyIHZpcnR1YWwgdHVtbXkiLCJwcmljZSI6IjEwLjUwIiwiY3VycmVuY3lDb2RlIjoiVVNEIn19.RAnXZfRhRSw7rDciIzO2suGKfhinykuLJ05mXpFkVNg";*/
+      const mockRefund = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMjM0NTY3ODkiLCJhdWQiOiJNb2NrIFBheW1lbnQgUHJvdmlkZXIiLCJ0eXAiOiJtb2NrXC9wYXltZW50c1wvaW5hcHBcL3YxIiwiZXhwIjoxMzQ1NTAzNDQzLCJpYXQiOjEzNDU0OTk4NDMsInJlcXVlc3QiOnsicmVmdW5kIjoiMTIzNDIiLCJyZWFzb24iOiJWaXJ0dWFsIGNob2NvbGF0ZSBjYWtlIHRvIGZpbGwgeW91ciB2aXJ0dWFsIHR1bW15IHdhcyB0ZXJyaWJsZSJ9fQ.Xn1Ji2gGBkwGRjIB0zNrY1nwYMc2cJ-0LSRd_RBGKHY";
 
       // BlueVia JWT
-      const blueviaJWT = "eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.IntcImlzc1wiOiBcIjM0WFYzN0JEUkJCRjRLWkNTOVFVXCIsIFwiaWF0XCI6IDEzNDIxODMwODUsIFwidHlwXCI6IFwidHUuY29tL3BheW1lbnRzL2luYXBwL3YxXCIsIFwicmVxdWVzdFwiOiB7XCJuYW1lXCI6IFwiUGllY2Ugb2YgQ2FrZVwiLCBcInByaWNlXCI6IFwiMTAuNTBcIiwgXCJwcmljZVRpZXJcIjogMSwgXCJwcm9kdWN0ZGF0YVwiOiBcInRyYW5zYWN0aW9uX2lkPTEwNFwiLCBcImN1cnJlbmN5Q29kZVwiOiBcIlVTRFwiLCBcImRlc2NyaXB0aW9uXCI6IFwiVmlydHVhbCBjaG9jb2xhdGUgY2FrZSB0byBmaWxsIHlvdXIgdmlydHVhbCB0dW1teVwifSwgXCJleHBcIjogMTM0MjE4NjY4NX0i.NKGlx9M6El7OOHM9DfrTYB3OaC0pa6JarymWK2-_dQQ";
+      const blueviaJWT = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI1Njc3NDRhMDJiZjVhZjZhOGM0YzFjODBkMjJmYjIiLCJ0eXAiOiJ0dS5jb21cL3BheW1lbnRzXC92MVwvcGF5IiwiZXhwIjozMzM3MzYwODk3LCJpYXQiOjEzMzczNjA4OTcsInJlcXVlc3QiOnsibmFtZSI6IlBpZWNlIG9mIENha2UiLCJkZXNjcmlwdGlvbiI6IlZpcnR1YWwgY2hvY29sYXRlIGNha2UgdG8gZmlsbCB5b3VyIHZpcnR1YWwgdHVtbXkiLCJwcmljZSI6W3siY291bnRyeSI6IkJSIiwiYW1vdW50IjoiMSIsImN1cnJlbmN5IjoiQlJMIn0seyJjb3VudHJ5IjoiRVMiLCJhbW91bnQiOiIwLjAxIiwiY3VycmVuY3kiOiJFVVIifV0sImRlZmF1bHRQcmljZSI6IlVTIiwicHJvZHVjdERhdGEiOiJteV9wcm9kdWN0X2lkPTEyMzQmbXlfc2Vzc2lvbl9pZD1YWVoiLCJwb3N0YmFja1VSTCI6Imh0dHA6IFwvXC9kZXZlbG9wZXJzc2VydmVyLmNvbVwvcG9zdGJhY2siLCJjaGFyZ2ViYWNrVVJMIjoiaHR0cDogXC9cL2RldmVsb3BlcnNlcnZlci5jb21cL2NoYXJnZWJhY2sifX0.b6n2j--3vyi1szMqsyXkldeUK5G0HWv4w_G7u1dXmdY";
       
       // Mozilla Marketplace JWT
       const marketplaceJWT = "eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.IntcImF1ZFwiOiBcIm1hcmtldHBsYWNlLm1vemlsbGEub3JnXCIsIFwiaXNzXCI6IFwiQVBQLTEyM1wiLCBcInJlcXVlc3RcIjoge1wiY3VycmVuY3lcIjogXCJVU0RcIiwgXCJwcmljZVwiOiBcIjAuOTlcIiwgXCJuYW1lXCI6IFwiVmlydHVhbCAzRCBHbGFzc2VzXCIsIFwicHJvZHVjdGRhdGFcIjogXCJBQkMxMjNfREVGNDU2X0dISV83ODkuWFlaXCIsIFwiZGVzY3JpcHRpb25cIjogXCJWaXJ0dWFsIDNEIEdsYXNzZXNcIn0sIFwiZXhwXCI6IFwiMjAxMi0wMy0yMVQxMTowOTo1Ni43NTMxNDFcIiwgXCJpYXRcIjogXCIyMDEyLTAzLTIxVDEwOjA5OjU2LjgxMDQyMFwiLCBcInR5cFwiOiBcIm1vemlsbGEvcGF5bWVudHMvcGF5L3YxXCJ9Ig.vl4E31_5H3t5H_mM8XA69DqypCqdACVKFy3kXz9EmTI";
@@ -20,7 +22,11 @@
       const invalidJWT = "eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.IntcImF1ZFwiOiBcImNvbm5lY3QucWEtb3BlbnRlbC0wNC5oaS5pbmV0XCIsIFwiaXNzXCI6IFwiMzRYVjM3QkRSQkJGNEtaQ1M5UVVcIiwgXCJyZXF1ZXN0XCI6IHtcIm5hbWVcIjogXCJQaWNlIG9mIENha2VcIiwgXCJwcmljZVwiOiAxMC41LCBcInByaWNlVGllclwiOiAxLCBcInByb2R1Y3RkYXRhXCI6IFwidHJhbnNhY3Rpb25faWQ9MTJcIiwgXCJjdXJyZW5jeUNvZGVcIjogXCJVU0RcIiwgXCJkZXNjcmlwdGlvblwiOiBcIlZpcnR1YWwgY2hvY29sYXRlIGNha2UgdG8gZmlsbCB5b3VyIHZpcnR1YWwgdHVtbXlcIn0sIFwiZXhwXCI6IDEzNDIwMDMwNzA1MTMsIFwiaWF0XCI6IDEzNDIwMDMwNzQxMTMsIFwidHlwXCI6IFwicGF5bWVudHMvaW5hcHAvdjFcIn0i.I5rFwoBtgyTltMJ_11rHOgcto-HdFbYlIOgVOVSlJe0";
    
       function pay(JWTs) {
-        var request = navigator.pay(JWTs);
+        if (!JWTs) {
+          JWTs = document.getElementById('jwt').value;
+          console.log(JWTs);
+        }
+        var request = navigator.mozPay(JWTs);
         request.onsuccess = function onsuccess() {
           console.log("onsuccess received");
           document.getElementById("result").innerHTML = "Payment success";
@@ -29,10 +35,21 @@
           console.log("onerror received");
           document.getElementById("result").innerHTML = "Payment error " + request.error.name;
         };
-      }
+      }      
     </script>
     <div>
-      PMPP = Public Mock Payment Provider
+      Enter a JWT<br>
+      <textarea id="jwt">
+      </textarea>
+      <br>
+      <button type=button style="width:50px;height:50px" onclick="pay()">
+        TEST
+      </button>
+    </div>
+    <div style="margin-top:50px">
+      <br>
+      Or select a predefined test <br>
+      (PMPP = Public Mock Payment Provider)
     </div>
     <div>
       <span id="result"></span>
@@ -58,6 +75,12 @@
           Pay with BlueVia or Mozilla Marketplace
         </button>
       </li>
+      <li>
+        <button type=button style="width:100px;height:100px" onclick="pay(mockRefund)">
+          Mock refund
+        </button>
+      </li>
+
       <li>
         <button type=button style="width:100px;height:100px" onclick="pay([invalidJWT])">
           Pay with invalid JWT
