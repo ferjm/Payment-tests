@@ -1,11 +1,14 @@
 {
   "name": "Payment",
   "description": "Payment",
-  "launch_path": "/",
+  "launch_path": "/index.html",
   "developer": {
     "name": "Telefonica",
     "url": "http://www.tid.es"
   },
+  "permissions": [
+    "pay"
+  ],
   "locales": {
     "en-US": {
       "name": "Payment",
