@@ -9,7 +9,9 @@
     <script>
       // Mock public payment provider JWT
       const mockJWT = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMjM0NTY3ODkiLCJhdWQiOiJNb2NrIFBheW1lbnQgUHJvdmlkZXIiLCJ0eXAiOiJtb2NrXC9wYXltZW50c1wvaW5hcHBcL3YxIiwiZXhwIjoxMzQ1MjU5ODgyLCJpYXQiOjEzNDUyNTYyODIsInJlcXVlc3QiOnsibmFtZSI6IlBpZWNlIG9mIENha2UiLCJkZXNjcmlwdGlvbiI6IlZpcnR1YWwgY2hvY29sYXRlIGNha2UgdG8gZmlsbCB5b3VyIHZpcnR1YWwgdHVtbXkiLCJwcmljZSI6W3siY291bnRyeSI6IlVTIiwiYW1vdW50IjoiNS41MCIsImN1cnJlbmN5IjoiVVNEIn0seyJjb3VudHJ5IjoiQlIiLCJhbW91bnQiOiI4LjUwIiwiY3VycmVuY3kiOiJCUkwifV19fQ.EaXnlL7LUlmYXUTty5ZkUQ7VZeCBa_edi2YXKPnjSl4";
-/*      const mockJWT = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMjM0NTY3ODkiLCJhdWQiOiJNb2NrIFBheW1lbnQgUHJvdmlkZXIiLCJ0eXAiOiJtb2NrXC9wYXltZW50c1wvaW5hcHBcL3YxIiwiZXhwIjoxMzQzMjk2NDQ0LCJpYXQiOjEzNDMyOTI4NDQsInJlcXVlc3QiOnsibmFtZSI6IlBpZWNlIG9mIENha2UiLCJkZXNjcmlwdGlvbiI6IlZpcnR1YWwgY2hvY29sYXRlIGNha2UgdG8gZmlsbCB5b3VyIHZpcnR1YWwgdHVtbXkiLCJwcmljZSI6IjEwLjUwIiwiY3VycmVuY3lDb2RlIjoiVVNEIn19.RAnXZfRhRSw7rDciIzO2suGKfhinykuLJ05mXpFkVNg";*/
+
+      const mockQATest = "eyJhbGciOiAiSFMyNTYiLCAidHlwIjogIkpXVCJ9.eyJhdWQiOiAibW9jayIsICJpc3MiOiAwLCAicmVxdWVzdCI6IHsibmFtZSI6ICJQaWVjZSBvZiBDYWtlIiwgInByaWNlIjogW3siY291bnRyeSI6ICJVUyIsICJhbW91bnQiOiA1LjUsICJjdXJyZW5jeSI6ICJVU0QifSwgeyJjb3VudHJ5IjogIkJSIiwgImFtb3VudCI6IDExLjA3LCAiY3VycmVuY3kiOiAiQlJMIn1dLCAicG9zdGJhY2tVUkwiOiAiaHR0cDovL2RldmVsb3BlcnNzZXJ2ZXIuY29tL3Bvc3RiYWNrIiwgInByb2R1Y3REYXRhIjogIm15X3Byb2R1Y3RfaWQ9MTIzNCZteV9zZXNzaW9uX2lkPVhZWiIsICJkZWZhdWx0UHJpY2UiOiAiVVMiLCAiY2hhcmdlYmFja1VSTCI6ICJodHRwOi8vZGV2ZWxvcGVyc2VydmVyLmNvbS9jaGFyZ2ViYWNrIiwgImRlc2NyaXB0aW9uIjogIlZpcnR1YWwgY2hvY29sYXRlIGNha2UgdG8gZmlsbCB5b3VyIHZpcnR1YWwgdHVtbXkifSwgImV4cCI6IDEzMzczNTcyOTcsICJpYXQiOiAxMzM3MzYwODk3LCAidHlwIjogIm1vY2svcGF5bWVudHMvaW5hcHAvdjEifQ.P9EVcUcea4hGyK3B4dNkx6nPgR1Y3YHJ_8YXvk7tMCg";
+
       const mockRefund = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMjM0NTY3ODkiLCJhdWQiOiJNb2NrIFBheW1lbnQgUHJvdmlkZXIiLCJ0eXAiOiJtb2NrXC9wYXltZW50c1wvaW5hcHBcL3YxIiwiZXhwIjoxMzQ1NTAzNDQzLCJpYXQiOjEzNDU0OTk4NDMsInJlcXVlc3QiOnsicmVmdW5kIjoiMTIzNDIiLCJyZWFzb24iOiJWaXJ0dWFsIGNob2NvbGF0ZSBjYWtlIHRvIGZpbGwgeW91ciB2aXJ0dWFsIHR1bW15IHdhcyB0ZXJyaWJsZSJ9fQ.Xn1Ji2gGBkwGRjIB0zNrY1nwYMc2cJ-0LSRd_RBGKHY";
 
       // BlueVia JWT
@@ -55,6 +57,11 @@
       <span id="result"></span>
     </div>
     <ul>
+      <li>
+        <button type=button style="width:100px;height:100px" onclick="pay(mockQATest)">
+          Pay PMPP (QA test)
+        </button>
+      </li>
       <li>
         <button type=button style="width:100px;height:100px" onclick="pay(mockJWT)">
           Pay PMPP
